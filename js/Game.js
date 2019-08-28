@@ -19,18 +19,31 @@ class Game {
         }];
         this.activePhrase = null;
     }
-    // getRandomPhrase method creates a random number to be used as the index value for the array of objects
+    /*
+    getRandomPhrase method 
+    - creates a random number to be used as the index value for the array of objects
+    */
     getRandomPhrase() {
         const i = Math.floor(Math.random() * this.phrases.length);
         const phrase = this.phrases[i];
         return phrase;
     }
-    startGame() { // startGame method
-        const overlayDiv = document.getElementById('overlay'); // Selects overlay div by id and sets display to none
+    /* 
+    startGame method
+    - Selects overlay div by id and sets display to none
+    - Selects phrase from getRandomPhrase method
+    - Instantiate new phrase class with randomPhrase
+    - Uses the addPhraseToDisplay method for new phrase variable
+    - Sets active phrase to randomPhrase
+    */
+    startGame() {
+        const overlayDiv = document.getElementById('overlay');
         overlayDiv.style.display = 'none';
-        const randomPhrase = this.getRandomPhrase(); // Grabs random phrase from phrase class
-        const phrase = new Phrase(randomPhrase.phrase); // Instantiate new phrase class with random phrase
-        phrase.addPhraseToDisplay(); // Uses the addPhraseToDisplay method for new phrase var
-        this.activePhrase = randomPhrase; // Finally, sets active phrase
+        const randomPhrase = this.getRandomPhrase();
+        const phrase = new Phrase(randomPhrase.phrase);
+        phrase.addPhraseToDisplay();
+        this.activePhrase = randomPhrase;
+    }
+    handleInteraction() {
     }
 }

@@ -7,5 +7,14 @@ button.addEventListener('click', () => {
 });
 
 
+// Selects the onscreen keyboard elements
+const qwerty = document.getElementById('qwerty');
+
+// Event listner for clicks onscreen keyboard
+qwerty.addEventListener('click', () => {
+    let letter = this.textContent;
+    handleInteraction();
+});
+
 
 
