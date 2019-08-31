@@ -6,14 +6,12 @@ button.addEventListener('click', () => {
     return game.startGame();
 });
 
-
 // Selects the onscreen keyboard elements
 const qwerty = document.getElementById('qwerty');
 
 // Event listner for clicks onscreen keyboard
-qwerty.addEventListener('click', () => {
-    let letter = this.textContent;
-    handleInteraction();
+qwerty.addEventListener('click', (event) => {
+    let letter = event.target.textContent;
 });
 
 

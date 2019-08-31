@@ -3,14 +3,9 @@ class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase(); // Sets phrase to all lower case 
     }
-    /*
-      addPhraseToDisplay method
-      - Selects ul nested in #phrase
-      - Creates varialbe to be inserted into phraseID
-      - Selects the phrase and uses a split to turn the string into an array
-      - Conditional determines how to build the li for the phraseHTML var
-      - Returns the list of lis and inserst them in the var phraseID
-     */
+    /**
+    * Display phrase on game board
+    */
     addPhraseToDisplay() {
         const phraseID = document.querySelector('#phrase ul');
         let phraseHTML = '';
@@ -24,13 +19,21 @@ class Phrase {
             return phraseID.innerHTML = phraseHTML;
           });
     }
+    /**
+     * Checks if passed letter is in phrase
+     * @param (string) letter - Letter to check
+     */
     checkLetter(letter) {
-      if (this.phrase.indexOf(letter) !== -1) {
-        return true;
+      if (game.activePhrase.phrase.indexOf(letter) !== -1) {
+      return true;
       }
       return false;
-    }
-    showMatchedLetter() {
-      
-    }
+  }
+  /**
+  * Displays passed letter on screen after a match is found
+  * @param (string) letter - Letter to display
+  */
+  showMatchedLetter(letter) {
+    
+  };
 }
