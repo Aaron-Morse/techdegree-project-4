@@ -44,9 +44,55 @@ class Game {
         const randomPhrase = this.getRandomPhrase();
         const phrase = new Phrase(randomPhrase.phrase);
         phrase.addPhraseToDisplay();
-        this.activePhrase = randomPhrase;
+        this.activePhrase = phrase;
     }
-    handleInteraction(param) {
-        checkLetter(param);
+    /**
+    * Checks for winning move
+    * @return {boolean} True if game has been won, false if game wasn't won
+    */
+    checkForWin() {
+        let hideCount = 0;
+        document.querySelectorAll('#phrase li')
+        .forEach(li => {
+            if (li.classList.contains('hide')) {
+                hideCount += 1;
+            }
+        });
+        if (hideCount > 0) {
+            return false
+        } 
+        return true;
     }
+    /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
+    removeLife() {
+        const hearts = document.querySelectorAll('#scoreboard img');
+        hearts[this.missed].src='images/lostHeart.png';
+        this.missed ++;
+        if (this.missed === 5) {
+            this.gameOver(false);
+        }
+    };
+    /**
+    * Displays game over message
+    * @param {boolean} gameWon - Whether or not the user won the game
+    */
+    gameOver(gameWon) {
+        let endGameDiv = document.getElementById('overlay');
+        let header = document.getElementById('game-over-message');
+        if (gameWon === true) {
+            endGameDiv.style.display = '';
+            endGameDiv.style.backgroundColor = 'lightgreen';
+            header.innerText = 'Winner, winner chicken dinner!';
+        }
+        if (gameWon === false) {
+            endGameDiv.style.display = '';
+            endGameDiv.style.backgroundColor = 'lightsalmon';
+            header.innerText = 'Try again next time, homie!';
+        }
+    };
+    handleInteraction() {}
 }

@@ -1,7 +1,7 @@
 let game;
-const button = document.getElementById('btn__reset');
+const startButton = document.getElementById('btn__reset');
 
-button.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
     game = new Game();
     return game.startGame();
 });
@@ -11,7 +11,9 @@ const qwerty = document.getElementById('qwerty');
 
 // Event listner for clicks onscreen keyboard
 qwerty.addEventListener('click', (event) => {
-    let letter = event.target.textContent;
+    const letter = event.target.textContent;s
+  //  game.handleInteraction(letter);
+    
 });
 
 

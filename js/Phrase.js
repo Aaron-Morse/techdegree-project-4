@@ -28,12 +28,18 @@ class Phrase {
       return true;
       }
       return false;
-  }
-  /**
-  * Displays passed letter on screen after a match is found
-  * @param (string) letter - Letter to display
-  */
-  showMatchedLetter(letter) {
-    
-  };
+    }
+    /**
+     * Displays passed letter on screen after a match is found
+     * @param (string) letter - letter to display
+     */
+    showMatchedLetter(letter) {
+      document.querySelectorAll('#phrase li')
+      .forEach(li => {
+        if (li.classList.contains(letter)) {
+          li.classList.remove('hide');
+          li.classList.add('show');
+        }
+      });
+    }
 }
