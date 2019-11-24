@@ -81,8 +81,7 @@ class Game {
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-        let endGameDiv = document.getElementById('overlay');
-        let header = document.getElementById('game-over-message');
+        const header = document.getElementById('game-over-message');
         if (gameWon === true) {
             endGameDiv.style.display = '';
             endGameDiv.style.backgroundColor = 'lightgreen';
@@ -94,5 +93,17 @@ class Game {
             header.innerText = 'Try again next time, homie!';
         }
     };
-    handleInteraction() {}
+
+    handleInteraction(letter) {
+        if (this.activePhrase.checkLetter(letter.innerText)) {
+            letter.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(letter.innerText);
+            if (this.checkForWin()) {
+                this.gameOver(true);
+            }
+        } else {
+            letter.classList.add('wrong');
+            this.removeLife();
+        }
+    }
 }
