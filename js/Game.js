@@ -70,7 +70,7 @@ class Game {
     */
     removeLife() {
         const hearts = document.querySelectorAll('#scoreboard img');
-        hearts[this.missed].src='images/lostHeart.png';
+        hearts[this.missed].src='images/lostSkull.png';
         this.missed ++;
         if (this.missed === 5) {
             this.gameOver(false);
@@ -94,16 +94,25 @@ class Game {
         }
     };
 
-    handleInteraction(letter) {
-        if (this.activePhrase.checkLetter(letter.innerText)) {
-            letter.classList.add('chosen');
-            this.activePhrase.showMatchedLetter(letter.innerText);
+        handleInteraction(letter) {
+        if (this.activePhrase.checkLetter(letter)) {
+            onScreenKeys.forEach(key => {
+                if (key.innerText === letter) {
+                    key.classList.add('chosen');
+                }
+            });
+            this.activePhrase.showMatchedLetter(letter);
             if (this.checkForWin()) {
                 this.gameOver(true);
             }
         } else {
-            letter.classList.add('wrong');
+            onScreenKeys.forEach(key => {
+                if (key.innerText === letter) {
+                    key.classList.add('wrong');
+                }
+            });
             this.removeLife();
         }
     }
+
 }
