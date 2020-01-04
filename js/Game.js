@@ -93,25 +93,28 @@ class Game {
             header.innerText = 'Try again next time, homie!';
         }
     };
-
-        handleInteraction(letter) {
-        if (this.activePhrase.checkLetter(letter)) {
-            onScreenKeys.forEach(key => {
-                if (key.innerText === letter) {
-                    key.classList.add('chosen');
-                }
-            });
-            this.activePhrase.showMatchedLetter(letter);
-            if (this.checkForWin()) {
-                this.gameOver(true);
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+    handleInteraction(letter) {
+    if (this.activePhrase.checkLetter(letter)) {
+        onScreenKeys.forEach(key => {
+            if (key.innerText === letter) {
+                key.classList.add('chosen');
             }
-        } else {
-            onScreenKeys.forEach(key => {
-                if (key.innerText === letter) {
-                    key.classList.add('wrong');
-                }
-            });
-            this.removeLife();
+        });
+        this.activePhrase.showMatchedLetter(letter);
+        if (this.checkForWin()) {
+            this.gameOver(true);
+        }
+    } else {
+        onScreenKeys.forEach(key => {
+            if (key.innerText === letter) {
+                key.classList.add('wrong');
+            }
+        });
+        this.removeLife();
         }
     }
 
