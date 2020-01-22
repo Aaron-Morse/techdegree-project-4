@@ -24,10 +24,7 @@ class Phrase {
      * @param (string) letter - Letter to check
      */
     checkLetter(letter) {
-      if (game.activePhrase.phrase.indexOf(letter) !== -1) {
-      return true;
-      }
-      return false;
+      return game.activePhrase.phrase.indexOf(letter) !== -1;
     }
     /**
      * Displays passed letter on screen after a match is found

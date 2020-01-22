@@ -70,7 +70,7 @@ class Game {
     */
     removeLife() {
         const hearts = document.querySelectorAll('#scoreboard img');
-        hearts[this.missed].src='images/lostSkull.png';
+        hearts[this.missed].src='images/lostHeart.png';
         this.missed ++;
         if (this.missed === 5) {
             this.gameOver(false);
@@ -83,11 +83,13 @@ class Game {
     gameOver(gameWon) {
         const header = document.getElementById('game-over-message');
         if (gameWon === true) {
+            endGameDiv.className = 'win';
             endGameDiv.style.display = '';
             endGameDiv.style.backgroundColor = 'lightgreen';
             header.innerText = 'Winner, winner chicken dinner!';
         }
         if (gameWon === false) {
+            endGameDiv.className = 'lose';
             endGameDiv.style.display = '';
             endGameDiv.style.backgroundColor = 'lightsalmon';
             header.innerText = 'Try again next time, homie!';
@@ -112,6 +114,7 @@ class Game {
         onScreenKeys.forEach(key => {
             if (key.innerText === letter) {
                 key.classList.add('wrong');
+                key.disabled = true;
             }
         });
         this.removeLife();

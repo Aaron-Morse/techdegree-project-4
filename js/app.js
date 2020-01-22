@@ -13,7 +13,8 @@ startButton.addEventListener('click', () => {
         game = new Game();
         return game.startGame();
     } else {
-        endGameDiv.style = '';
+        endGameDiv.className = 'start'
+        endGameDiv.style = 'start';
         gameOverMsg.innerText = '';
         const newList = document.createElement('UL');
         const oldList = document.querySelector('#phrase ul');
